@@ -1,0 +1,36 @@
+import pandas as pd
+data = {
+    "Name": ["Aarav", "Diya", "Kabir", "Meera", "Rohan",
+             "Ananya", "Vikram", "Ishita", "Arjun", "Sara"],
+
+    "Subject": ["Python", "SQL", "Python", "SQL", "Math",
+                "Python", "Math", "SQL", "Math", "Python"],
+
+    "Marks": [78, 92, 67, 85, 74, 95, 81, 88, 69, 90],
+
+    "City": ["Chennai", "Mumbai", "Delhi", "Chennai", "Mumbai",
+             "Delhi", "Chennai", "Mumbai", "Delhi", "Chennai"]
+}
+df = pd.DataFrame(data)
+print(df)
+sorted_df = df.sort_values("Marks", ascending=False)
+print("Highest scoring student",sorted_df.iloc[0,0])
+high_scorers=df[df["Marks"]>=80]
+print("Number of high scorers=",high_scorers.shape[0])
+subject_avg=df.groupby("Subject")["Marks"].mean()
+print("Subject avg",subject_avg)
+best_subject= subject_avg.idxmax()
+print("Best subject",best_subject)
+city_avg=df.groupby("City")["Marks"].mean()
+print("City avg",city_avg)
+best_city=city_avg.idxmax()
+print("Best city",best_city)
+best_city_avg=city_avg.max()
+print("Best city avg",best_city_avg)
+
+
+
+
+    
+    
+      
